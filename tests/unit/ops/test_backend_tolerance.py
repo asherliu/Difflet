@@ -100,7 +100,14 @@ class Row:
 
 TOLERANCE = [
     Row("attention", torch.float32, "tolerance", 1e-5, 0.0, "SDPA vs the CPU softmax"),
-    Row("attention", torch.bfloat16, "tolerance", None, None, "measured in Step A"),
+    Row(
+        "attention",
+        torch.bfloat16,
+        "tolerance",
+        1e-2,
+        1e-1,
+        "Step A, RTX PRO 6000 Blackwell, torch 2.11 cu128: max_abs 4.0e-3, max_rel 5.5e-2",
+    ),
     Row("cross_attention", torch.float32, "tolerance", 1e-5, 0.0, ""),
     Row(
         "attention_bounds",
@@ -118,7 +125,14 @@ TOLERANCE = [
         0.0,
         "fused F.rms_norm vs the seven-pass reference",
     ),
-    Row("RMSNorm", torch.bfloat16, "tolerance", None, None, "measured in Step A"),
+    Row(
+        "RMSNorm",
+        torch.bfloat16,
+        "tolerance",
+        1e-1,
+        1e-2,
+        "Step A, RTX PRO 6000 Blackwell, torch 2.11 cu128: max_abs 1.8e-2, max_rel 9.2e-3",
+    ),
     Row("rms_norm_fp32", torch.float32, "tolerance", 1e-6, 0.0, ""),
     Row("LayerNorm", torch.float32, "tolerance", 1e-6, 0.0, ""),
     Row(
