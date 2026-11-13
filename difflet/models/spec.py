@@ -58,6 +58,13 @@ class ModelSpec:
     default_fps: int | None = None
     accepts_cfg_parallel: bool = False
     accepts_negative_prompt: bool = False
+    #: The keyframes a request may condition on (``"first"``, ``"last"``): ``difflet run
+    #: --first-frame/--last-frame`` and a served video request's ``first_frame``/``last_frame``
+    #: uploads reach ``generate(first_image=..., last_image=...)`` as RGB PIL images.
+    keyframe_anchors: tuple[str, ...] = ()
+    #: ``generate`` returns ``video`` (``(1, 3, F, H, W)`` in [0, 1]), ``audio`` (``(1, 2,
+    #: samples)`` in [-1, 1]) and ``sample_rate``, written as one MP4 with an AAC stereo track.
+    output_has_audio: bool = False
     #: CLI options the model refuses: (argparse attribute, how the message names it).
     refused_cli_flags: tuple[tuple[str, str], ...] = ()
     #: CLI options forwarded to the application as keyword arguments when set.
