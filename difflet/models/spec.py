@@ -93,6 +93,7 @@ _GPU_SPEC_MODULES = {
     "hunyuan_video": "difflet.models.hunyuan_video.spec",
     "ltx_2": "difflet.models.ltx_2.spec",
     "hunyuan_video_15": "difflet.models.hunyuan_video_15.spec",
+    "minimax_h3": "difflet.models.minimax_h3.spec",
 }
 
 
